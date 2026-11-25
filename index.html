@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Invitacion Para Ti :3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 12px;
+            overflow-x: hidden;
+            background: radial-gradient(ellipse at 50% 20%, #5a0a1e 0%, #230612 50%, #08090f 100%) fixed;
+            font-family: 'Cinzel', Georgia, serif;
+            color: #ffd9e0;
+        }
+
+        .ticket {
+            width: min(94vw, 400px);
+            background: linear-gradient(180deg, #1a0a10, #12060b);
+            border: 2px solid #b3122e;
+            border-radius: 18px;
+            box-shadow: 0 0 25px rgba(224, 16, 58, .5);
+            text-align: center;
+            animation: entrar .9s ease both;
+        }
+        .principal { padding: 30px 22px 26px; }
+
+        .admite {
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: #ffc93c;
+            text-shadow: 0 0 8px rgba(255, 190, 40, .6);
+        }
+
+        .titulo {
+            font-family: 'Metal Mania', 'Impact', serif;
+            font-size: clamp(34px, 11vw, 48px);
+            line-height: 1;
+            margin: 14px 0 6px;
+            color: #ff2a3f;
+            text-shadow: 0 0 10px rgba(255, 30, 60, .8), 0 0 28px rgba(255, 30, 60, .45);
+        }
+
+        .subtitulo { font-size: 12px; letter-spacing: 3px; color: #ff9db0; }
+
+        .frase {
+            margin: 22px 0 18px;
+            font-size: clamp(15px, 4.4vw, 18px);
+            line-height: 1.5;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 120, 150, .5);
+        }
+        .frase b { color: #ff4d6d; }
+
+        .datos {
+            display: grid;
+            gap: 10px;
+            padding: 14px;
+            border: 1px dashed rgba(255, 77, 109, .5);
+            border-radius: 12px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .datos .fecha { font-size: 20px; font-weight: 700; color: #ffc93c; }
+        .datos .bandas { font-size: 12px; color: #ff9db0; letter-spacing: 2px; }
+
+        .corte {
+            position: relative;
+            border-top: 2px dashed rgba(255, 77, 109, .55);
+            margin: 0 18px;
+        }
+        .corte::before, .corte::after {
+            content: "";
+            position: absolute;
+            top: -14px;
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: #230612;
+            border: 2px solid #b3122e;
+        }
+        .corte::before { left: -33px;  clip-path: inset(0 0 0 50%); }
+        .corte::after  { right: -33px; clip-path: inset(0 50% 0 0); }
+
+        .talon { padding: 22px 22px 28px; }
+
+        .pregunta {
+            font-family: 'Metal Mania', 'Impact', serif;
+            font-size: clamp(22px, 7vw, 30px);
+            color: #ff4d6d;
+            text-shadow: 0 0 12px rgba(255, 30, 80, .7);
+            margin-bottom: 18px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            min-height: 54px;
+        }
+
+        .btn {
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 13px 22px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .si {
+            background: linear-gradient(135deg, #ff2a55, #b3122e);
+            color: #fff;
+            box-shadow: 0 0 18px rgba(255, 42, 85, .6);
+            animation: pulso 2s ease-in-out infinite;
+        }
+        .no { background: #2a1620; color: #ff9db0; border: 1px solid #5a2a3a; }
+
+        .gracias { display: none; }
+        .gracias h2 {
+            font-family: 'Metal Mania', 'Impact', serif;
+            font-size: clamp(26px, 8vw, 36px);
+            color: #ff4d6d;
+            text-shadow: 0 0 14px rgba(255, 30, 80, .8);
+            margin-bottom: 10px;
+        }
+        .gracias p { margin-bottom: 18px; line-height: 1.5; }
+        .wa { display: inline-block; background: #25d366; color: #fff; box-shadow: 0 0 16px rgba(37, 211, 102, .6); }
+
+        .numero { margin-top: 20px; font-size: 11px; letter-spacing: 4px; color: #7d4455; }
+
+        .flota {
+            position: fixed;
+            bottom: -40px;
+            pointer-events: none;
+            animation: subir linear forwards;
+            z-index: 10;
+        }
+
+        @keyframes entrar {
+            from { opacity: 0; transform: translateY(30px) scale(.96); }
+            to   { opacity: 1; transform: none; }
+        }
+        @keyframes pulso {
+            0%, 100% { box-shadow: 0 0 12px rgba(255, 42, 85, .45); }
+            50%      { box-shadow: 0 0 26px rgba(255, 42, 85, .9); }
+        }
+        @keyframes subir {
+            to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket">
+        <div class="principal">
+            <div class="admite">ENTRADA ESPECIAL · ADMITE 2</div>
+            <h1 class="titulo">METAL<br>MILLENNIUM</h1>
+            <div class="subtitulo">CICLO DE METAL NACIONAL</div>
+
+            <p class="frase">
+                Hay un plan que solo tiene sentido contigo.<br>
+                Ruido, luces y tú a mi lado: <b>mi lugar favorito</b>.
+            </p>
+
+            <div class="datos">
+                <div class="fecha">DOM · 6 DIC 2026</div>
+                <div>7:30 PM</div>
+                <div>Teatro Jorge Eliécer Gaitán · Bogotá</div>
+                <div class="bandas">GAIAS PENDULUM · ETHEREAL · WARRIORS OF THE LIGHT</div>
+            </div>
+        </div>
+
+        <div class="corte"></div>
+
+        <div class="talon">
+            <div id="pregunta">
+                <p class="pregunta">¿Me acompañas, Gerald?</p>
+                <div class="botones" id="botones">
+                    <button class="btn si" id="si">Sí, vamos 🤘</button>
+                    <button class="btn no" id="no">No</button>
+                </div>
+            </div>
+
+            <div class="gracias" id="gracias">
+                <h2>¡Será increíble! 🤘❤️</h2>
+                <p>Ya tienes tu entrada.<br>Avísame que dijiste que sí:</p>
+                <a class="btn wa" id="wa" target="_blank" rel="noopener">Avisar por WhatsApp</a>
+            </div>
+
+            <div class="numero">ENTRADA N.º 001</div>
+        </div>
+    </div>
+
+    <script>
+        const MI_NUMERO = "573045945458";
+        const MENSAJE = "¡Sí quiero ir contigo al Metal Millennium el 6 de diciembre! 🤘❤️";
+
+        const si = document.getElementById("si");
+        const no = document.getElementById("no");
+
+        function escapar() {
+            no.style.position = "fixed";
+            const x = Math.random() * (innerWidth - 110);
+            const y = Math.random() * (innerHeight - 60);
+            no.style.left = Math.max(8, x) + "px";
+            no.style.top  = Math.max(8, y) + "px";
+        }
+
+        no.addEventListener("mouseover", escapar);
+        no.addEventListener("touchstart", e => { e.preventDefault(); escapar(); }, { passive: false });
+        no.addEventListener("click", escapar);
+
+        function celebrar() {
+            const emojis = ["❤️", "🔥", "🤘", "💖", "🖤"];
+            for (let i = 0; i < 45; i++) {
+                const e = document.createElement("span");
+                e.className = "flota";
+                e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                e.style.left = Math.random() * 100 + "vw";
+                e.style.fontSize = 18 + Math.random() * 26 + "px";
+                e.style.animationDuration = 2.5 + Math.random() * 3 + "s";
+                e.style.animationDelay = Math.random() * 1.2 + "s";
+                document.body.appendChild(e);
+                setTimeout(() => e.remove(), 7500);
+            }
+        }
+
+        si.addEventListener("click", () => {
+            document.getElementById("pregunta").style.display = "none";
+            document.getElementById("gracias").style.display = "block";
+            no.remove();
+            document.getElementById("wa").href =
+                "https://wa.me/" + MI_NUMERO + "?text=" + encodeURIComponent(MENSAJE);
+            celebrar();
+        });
+    </script>
+</body>
+</html>
